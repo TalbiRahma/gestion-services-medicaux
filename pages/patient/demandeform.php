@@ -10,9 +10,9 @@ $statement->bindParam(':idmed', $idmed, PDO::PARAM_INT);
 $statement->execute();
 $med = $statement->fetch(PDO::FETCH_ASSOC);
 
- var_dump($_GET);
+ //var_dump($_GET);
 
-
+ session_start();
 
 ?>
 
@@ -55,22 +55,28 @@ $med = $statement->fetch(PDO::FETCH_ASSOC);
         <div class="col-1"></div>
         <div class="col-4">
             <div class="mb-3 row">
-                <label for="nom" class="col-sm-2 col-form-label">Nom</label>
-                <div class="col-sm-10">
-                <input type='text' name='nom' readonly class='form-control-plaintext' id='staticEmail' value='nom'>
                 
+                <label for="nom" class="col-sm-2 col-form-label">Nom</label>
+                
+                <div class="col-sm-10">
+                <?php
+                echo '<input type="text" name="nom" readonly class="form-control-plaintext" id="staticEmail" value="'.$_SESSION['nom'].'">'
+                ?>
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="prenom" class="col-sm-2 col-form-label">Prenom</label>
+                 <label for="prenom" class="col-sm-2 col-form-label">Prenom</label>
+                
                 <div class="col-sm-10">
-                <input type="text" name="prenom" readonly class="form-control-plaintext" id="staticEmail" value="prenom">
+                    <?php
+                echo '<input type="text" name="prenom" readonly class="form-control-plaintext" id="staticEmail" value="'.$_SESSION['prenom'].'">';
+                ?>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="num_tel" class="col-sm-2 col-form-label">Numéro téléphone</label>
                 <div class="col-sm-10">
-                <input type="text" name="num_tel" class="form-control" >
+                <input type="text" name="num_tel" class="form-control" value="">
                 </div>
             </div>
             <div class="mb-3 row">

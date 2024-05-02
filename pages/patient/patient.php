@@ -1,3 +1,8 @@
+<?php
+    session_start();
+   
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +13,9 @@
 </head>
 <body>
     <header>
-        
-        <h1>Bienvenue flen fouleny</h1>
+        <?php
+        echo '<h1>Bienvenue '.$_SESSION['nom'].' '.$_SESSION['prenom'].'</h1>';
+        ?>
         <nav>
             <ul>
                 <li><a href="medecin.php">Médecin</a></li>

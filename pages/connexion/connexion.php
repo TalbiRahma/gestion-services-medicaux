@@ -1,10 +1,11 @@
 <?php
+var_dump($_POST);
 $email = $_POST['email'];
 $password = $_POST['password'];
 // connect to the database and select the publisher
 require '../includes/connect.php';
 $pdo = connect();
-$sql = 'SELECT * user  WHERE email= :email AND password= :password';
+$sql = 'SELECT * FROM user  WHERE email= :email AND password= :password';
 
 $statement = $pdo->prepare($sql);
 $statement->bindParam(':email', $email, PDO::PARAM_INT);
@@ -12,12 +13,14 @@ $statement->bindParam(':password', $password, PDO::PARAM_STR);
 $statement->execute();
 $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-if($user->rowCount()==1){
-    session_start();
-    $_SESSION['id']=$userid;
 
 
+if($user){
+   session_start();
+   $_SESSION=$user;
+   var_dump($_SESSION);
 echo $user['role'];
+
 if($user['role'] == "patient"){
     
     
@@ -48,6 +51,6 @@ if($user['role'] == "patient"){
    header("Location: ../prosante/laboratoire/laboratoire.php");
    exit();
 }
-} else{
-    //traitement des erreurs
+}else{
+   //traitement d'erreur
 }
