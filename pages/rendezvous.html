@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prendre un rendez-vous</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Prendre un rendez-vous</h1>
+        <nav>
+            <ul>
+                <li><a href="patient.html">Patients</a></li>
+                <li><a href="rendezvous.html">Rendez-vous</a></li>
+                <li><a href="profil.html">Profil</a></li>
+                <!--<li><a href="connexion.php" class="btn">Se connecter</a></li>
+                <li><a href="inscription.php" class="btn">S'inscrire</a></li>-->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Calendrier</h2>
+            <!-- Exemple de calendrier -->
+            <div id="calendar"></div>
+        </section>
+        <section>
+            <h2>Patients</h2>
+            <!-- Exemple de liste déroulante pour sélectionner un patient -->
+            <select id="patient" name="patient">
+                <option value="">Sélectionner un patient</option>
+                <option value="1">John Doe</option>
+                <option value="2">Jane Smith</option>
+                <option value="3">Robert Johnson</option>
+                <!-- Ajoute ici d'autres patients -->
+            </select>
+        </section>
+        <section>
+            <h2>Confirmation</h2>
+            <!-- Exemple de formulaire pour confirmer le rendez-vous -->
+            <form action="traitement_rendezvous.php" method="post">
+                <label for="date">Date :</label>
+                <input type="date" id="date" name="date" required><br>
+                <label for="heure">Heure :</label>
+                <input type="time" id="heure" name="heure" required><br>
+                <label for="patient">Patient :</label>
+                <select id="patient" name="patient" required>
+                    <option value="">Sélectionner un patient</option>
+                    <option value="1">John Doe</option>
+                    <option value="2">Jane Smith</option>
+                    <option value="3">Robert Johnson</option>
+                    <!-- Ajoute ici d'autres patients -->
+                </select><br>
+                <button type="submit">Confirmer le rendez-vous</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <!-- Pied de page -->
+    </footer>
+    <script src="js/script.js" defer></script>
+    <script>
+        // JavaScript pour initialiser le calendrier
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: ['dayGrid'],
+                defaultView: 'dayGridMonth'
+                // Ajoute ici d'autres options pour le calendrier si nécessaire
+            });
+            calendar.render();
+        });
+    </script>
+</body>
+</html>
